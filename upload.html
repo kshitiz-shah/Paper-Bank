@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload Papers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Upload Question Papers</h1>
+  </header>
+  <main>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="course">Subject Name:</label>
+      <input type="text" id="course" name="course" required>
+
+      <label for="college">College Name:</label>
+      <input type="text" id="college" name="college" required>
+
+      <label for="year">Semester:</label>
+      <input type="text" id="year" name="year" required>
+
+      <label for="subject">Branch:</label>
+      <input type="text" id="subject" name="subject" required>
+
+      <label for="file">Upload Question Paper:</label>
+      <input type="file" id="file" name="file" accept=".pdf" required>
+
+      <button type="submit">Submit</button>
+      <div id="message"></div>
+    </form>
+
+    <script>
+      document.getElementById('uploadForm').addEventListener('submit', async function(event) {
+        event.preventDefault();
+
+        const form = document.getElementById('uploadForm');
+        const formData = new FormData(form);
+
+        try {
+          const response = await fetch('/upload', {
+            method: 'POST',
+            body: formData,
+          });
+
+          const result = await response.text();
+
+          if (response.ok) {
+            document.getElementById('message').textContent = 'File uploaded and saved successfully!';
+            form.reset(); // Clear the form after successful upload
+          } else {
+            document.getElementById('message').textContent = 'Error uploading file: ' + result;
+          }
+        } catch (error) {
+          document.getElementById('message').textContent = 'Error uploading file.';
+          console.error('Upload error:', error);
+        }
+      });
+    </script>
+  </main>
+  <footer>
+    <p>&copy; 2024 Question Paper Bank</p>
+  </footer>
+</body>
+</html>

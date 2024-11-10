@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Question Papers</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>View Question Papers</h1>
+  </header>
+  <main>
+    <p>Select filters to view question papers.</p>
+
+    <div class="filters">
+      <select id="courseFilter">
+        <option value="">All Courses</option>
+        <option value="Mechanical">Mechanical</option>
+        <option value="Computer science">Computer science</option>
+        <option value="E & TC">E & TC</option>
+        <option value="Civil">Civil</option>
+        <option value="Robotics">Robotics</option>
+      </select>
+
+      <select id="yearFilter">
+        <option value="">All Semesters</option>
+        <option value="SEM 1">SEM 1</option>
+        <option value="SEM 2">SEM 2</option>
+        <option value="SEM 3">SEM 3</option>
+        <option value="SEM 4">SEM 4</option>
+        <option value="SEM 5">SEM 5</option>
+        <option value="SEM 6">SEM 6</option>
+        <option value="SEM 7">SEM 7</option>
+        <option value="SEM 8">SEM 8</option>
+      </select>
+
+      <button onclick="applyFilters()">Apply Filters</button>
+    </div>
+
+    <div class="file-list" id="file-list">
+      <!-- Filtered files will appear here -->
+    </div>
+  </main>
+  <footer>
+    <p>&copy; 2024 Question Paper Bank</p>
+  </footer>
+
+  <script>
+    function applyFilters() {
+      const course = document.getElementById('courseFilter').value;
+      const year = document.getElementById('yearFilter').value;
+
+      // Prepare query string with filter parameters
+      const query = new URLSearchParams({ course, year }).toString();
+
+      fetch(`/files?${query}`)
+        .then(response => response.json())
+        .then(files => {
+          const fileList = document.getElementById('file-list');
+          fileList.innerHTML = '';
+
+          if (files.length > 0) {
+            // Display all files sorted by relevance
+            files.forEach(file => {
+              const fileItem = document.createElement('div');
+              fileItem.classList.add('file-item');
+              fileItem.innerHTML = `
+                <img src="images/pdf-icon.jpg" alt="PDF icon" class="file-icon">
+                <span class="file-name">${file.subject} - ${file.year} (${file.course})</span>
+                <div class="file-actions">
+                  <a href="/uploads/${file.filename}" target="_blank">View</a>
+                  <a href="/uploads/${file.filename}" download>Download</a>
+                </div>
+              `;
+              fileList.appendChild(fileItem);
+            });
+          } else {
+            fileList.innerHTML = '<p>No files found.</p>';
+          }
+        })
+        .catch(error => console.error('Error fetching files:', error));
+    }
+
+    // Load all files on page load
+    applyFilters();
+  </script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Paper Bank</title>
+  <link rel="stylesheet" href="style.css"> <!-- Link to CSS for styling -->
+  <script src="script.js"></script>
+</head>
+
+<body>
+  <header>
+    <h1>Question Paper Bank</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#">Login</a> <!-- Adjust if you have a login page -->
+      <a href="#">Dashboard</a> <!-- Adjust if you have a dashboard page -->
+    </nav>
+  </header>
+  
+  <main>
+    <h2>Welcome to the Question Paper Bank</h2>
+    <p>Find and upload previous year question papers here.</p>
+
+    <div class="sections">
+      <!-- Upload Section -->
+      <div class="section" id="upload-section">
+        <img src="images/upload.webp" alt="Upload Image" class="image-size">
+        <h3>Upload Papers</h3>
+        <p>Upload previous year question papers for others to view.</p>
+        <button onclick="window.location.href='upload.html'">Upload</button> <!-- Link to upload page -->
+      </div>
+
+      <!-- View Section -->
+      <div class="section" id="view-section">
+        <img src="images/download.webp" alt="View Image" class="image-size">
+        <h3>View Papers</h3>
+        <p>Browse and download question papers.</p>
+        <button onclick="window.location.href='view.html'">View</button> <!-- Link to view page -->
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 Question Paper Bank</p>
+  </footer>
+</body>
+</html>
