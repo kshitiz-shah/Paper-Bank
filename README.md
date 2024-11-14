@@ -7,7 +7,7 @@ Welcome to the Question Paper Bank – a dedicated platform where students can e
 ## Technologies Used
 - *Node.js*: JavaScript runtime for building the server.
 - *Express.js*: Web framework for handling routing and middleware.
-- *MongoDB*: NoSQL database for storing metadata on question papers.
+- *MongoDB*:  database to store metadata on question papers.
 - *Multer*: Middleware for handling multipart/form-data, used for file uploads.
 - *React*: Frontend library for building the user interface.
 - *HTML/CSS*: Used alongside React for styling and layout.
