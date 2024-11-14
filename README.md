@@ -31,6 +31,5 @@ This project is a web application that allows users to upload files along with m
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
-   cd your-repo-name
+  https://github.com/kshitiz-shah/Paper-Bank
 
