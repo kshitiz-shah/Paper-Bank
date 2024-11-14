@@ -31,7 +31,7 @@ Welcome to the Question Paper Bank – a dedicated platform where students can e
 
 1. Clone the repository:
  
- git clone  https://github.com/kshitiz-shah/Paper-Bank
+  https://github.com/kshitiz-shah/Paper-Bank
  
 
 ### Conclusion
